@@ -1,5 +1,20 @@
 # Virtual World User Engagement Pipeline Analytics
 
+# Kafka Producer Example
+from confluent_kafka import Producer
+
+conf = {
+    'bootstrap.servers': 'your_confluent_cloud_bootstrap_server',
+    'security.protocol': 'SASL_SSL',
+    'sasl.mechanisms': 'PLAIN',
+    'sasl.username': 'your_api_key',
+    'sasl.password': 'your_api_secret'
+}
+
+producer = Producer(conf)
+producer.produce('user_engagement_events', key='user_123', value='{"event": "purchase"}')
+producer.flush()
+
 ## Project Overview
 This project simulates and analyzes user engagement data from a virtual world environment. It models activities like movement, interaction, and purchases to build a real-time data pipeline for processing, storing, and visualizing user behaviors.
 
