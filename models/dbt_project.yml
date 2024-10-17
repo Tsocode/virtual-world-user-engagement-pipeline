@@ -1,1 +1,9 @@
+name: 'virtual_world_analytics'
+version: '1.0'
+
+profile: 'bigquery'
+
+models:
+  virtual_world_analytics:
+    +materialized: table
 
