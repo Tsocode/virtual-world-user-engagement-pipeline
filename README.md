@@ -83,6 +83,15 @@ CMD ["python", "kafka_producer_consumer.py"]
 docker build -t kafka-producer-consumer .
 docker run kafka-producer-consumer
 
+-----------------------------
+
+Some ideas for "Future Work":
+
+Scaling up: How you would handle larger data volumes, e.g., expanding the Kafka cluster or scaling the Spark job.
+Adding machine learning: Predictive modeling on user behavior (e.g., churn prediction, customer segmentation).
+Data enrichment: Integrating additional data sources like weather, geolocation, or user demographics to enrich the dataset.
+Performance optimization: Consider how you'd optimize processing times, reduce latencies, or lower costs in cloud environments.
+
 
 
 ## License
