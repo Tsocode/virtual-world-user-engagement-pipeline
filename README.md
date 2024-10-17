@@ -1,16 +1,5 @@
 # Virtual World User Engagement Pipeline Analytics
 
-# Kafka Producer Example
-from confluent_kafka import Producer
-
-conf = {
-    'bootstrap.servers': 'your_confluent_cloud_bootstrap_server',
-    'security.protocol': 'SASL_SSL',
-    'sasl.mechanisms': 'PLAIN',
-    'sasl.username': 'your_api_key',
-    'sasl.password': 'your_api_secret'
-}
-
 producer = Producer(conf)
 producer.produce('user_engagement_events', key='user_123', value='{"event": "purchase"}')
 producer.flush()
@@ -58,6 +47,43 @@ Here’s a high-level overview of the data pipeline architecture:
 
 ### 5. Visualization
 - Use **Google Data Studio** or **Tableau Public** to visualize the processed data with dashboards.
+
+- INSTRUCTIONS:
+
+- # Kafka Producer Example
+from confluent_kafka import Producer
+
+conf = {
+    'bootstrap.servers': 'your_confluent_cloud_bootstrap_server',
+    'security.protocol': 'SASL_SSL',
+    'sasl.mechanisms': 'PLAIN',
+    'sasl.username': 'your_api_key',
+    'sasl.password': 'your_api_secret'
+}
+
+-----------------------
+
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container
+COPY . /app
+
+# Install any needed packages
+RUN pip install -r requirements.txt
+
+# Run the script
+CMD ["python", "kafka_producer_consumer.py"]
+
+---------------------------
+
+docker build -t kafka-producer-consumer .
+docker run kafka-producer-consumer
+
+
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
